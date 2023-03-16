@@ -1,0 +1,393 @@
+{
+  "Uuid": "3c9d0464-8643-5ffe-96e5-ab1769818209",
+  "IsCustomNode": false,
+  "Description": "",
+  "Name": "ENECA-КР-Сбор информации-D1.0-v1.0",
+  "ElementResolver": {
+    "ResolutionMap": {
+      "Math": {
+        "Key": "DSCore.Math",
+        "Value": "DSCoreNodes.dll"
+      }
+    }
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "CoreNodeModels.Input.Filename, CoreNodeModels",
+      "HintPath": "D:\\Коледа Павел\\Программирование\\Скрипт по сбору информации\\ENECA-КР-Сбор информации-D1.0-v1.0.py",
+      "InputValue": ".\\ENECA-КР-Сбор информации-D1.0-v1.0.py",
+      "NodeType": "ExtensionNode",
+      "Id": "8f365640cd6d42268d780bcd75e4b73e",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "eb754a148e544a8ba41fe5c3b740ac9e",
+          "Name": "",
+          "Description": "Filename",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Позволяет выбрать файл в системе и получить его имя"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.FileObject, CoreNodeModels",
+      "NodeType": "ExtensionNode",
+      "Id": "08eaa3c88d2644d0bde7eda7fe904493",
+      "Inputs": [
+        {
+          "Id": "89d81c117ccb42c4a654499a8da0e353",
+          "Name": "path",
+          "Description": "Путь к файлу.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "79c2dbd6df144a86bdd21738b8435674",
+          "Name": "file",
+          "Description": "Файловый объект",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Создание нового объекта на основе пути."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSCore.IO.FileSystem.ReadText@var",
+      "Id": "983334ffbc424442840654993ffd0bae",
+      "Inputs": [
+        {
+          "Id": "fb2bb0660d584841a0cca994ff35a09a",
+          "Name": "file",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "eb07f0b737b84b51a237e3ebf0109df5",
+          "Name": "str",
+          "Description": "Содержимое текстового файла.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Чтение текстового файла с выводом содержимого в виде строки.\n\nFileSystem.ReadText (file: var): string"
+    },
+    {
+      "ConcreteType": "PythonNodeModels.PythonStringNode, PythonNodeModels",
+      "VariableInputPorts": true,
+      "NodeType": "ExtensionNode",
+      "Id": "2f529c8333214b3aa1fae21d0600e10b",
+      "Inputs": [
+        {
+          "Id": "1cb24ae38e77440bbdcc7fd82a2c916e",
+          "Name": "script",
+          "Description": "Сценарий Python для запуска.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "c21ecb4894cb4e6c9f9bc582e395a0d0",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "bb589c2f4eae4a2397a2b195eb8b1105",
+          "Name": "OUT",
+          "Description": "Результат сценария Python",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Выполнение сценария IronPython из строки."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.BoolSelector, CoreNodeModels",
+      "NodeType": "BooleanInputNode",
+      "InputValue": false,
+      "Id": "440154aaeefe4b31bffa4ca8a3bdbf07",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "3660ed1f9c5342979747ce6feb2a5fd7",
+          "Name": "",
+          "Description": "Boolean",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Выбор между значениями true и false."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Watch, CoreNodeModels",
+      "NodeType": "ExtensionNode",
+      "Id": "db9a5a6504f24bc4b3c3ab49a2180591",
+      "Inputs": [
+        {
+          "Id": "65098775b4fa4d439439be02447c80e0",
+          "Name": "",
+          "Description": "Узел для оценки.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "fe98a57086624548bf9b53d31352043a",
+          "Name": "",
+          "Description": "Просмотр содержимого.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Визуализация входного элемента узла."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSOffice.Data.ExportCSV@string,var[][]",
+      "Id": "3ad39a5a9acd47a5b4fcad39cff7ec9d",
+      "Inputs": [
+        {
+          "Id": "16a8ccb02d0c4a99aff793db7f92f5a5",
+          "Name": "filePath",
+          "Description": "Путь для записи\n\nstring",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "9a9b8e47200444e3a001706f6aa9a506",
+          "Name": "data",
+          "Description": "Список списков для записи в файл CSV\n\nvar[][]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "dab08fdc87c04f0da3cbe62b9bdab222",
+          "Name": "void",
+          "Description": "void",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Запись списка списков в файл с использованием формата разделения значений при помощи запятых. Внешний список обозначает строки, внутренний — столбцы.\n\nData.ExportCSV (filePath: string, data: var[][]): void"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
+      "NodeType": "StringInputNode",
+      "InputValue": "C:\\Users\\User\\Desktop\\revit_data2.csv",
+      "Id": "020f67735ccf46b9879b8ee1856fc0e2",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "7beec4794c824773993b244686ff7063",
+          "Name": "",
+          "Description": "String",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Создание строки."
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "eb754a148e544a8ba41fe5c3b740ac9e",
+      "End": "89d81c117ccb42c4a654499a8da0e353",
+      "Id": "b077657df7af4e3db859ff802ed7103b"
+    },
+    {
+      "Start": "79c2dbd6df144a86bdd21738b8435674",
+      "End": "fb2bb0660d584841a0cca994ff35a09a",
+      "Id": "e69a48bc215e4c9b9e5129212b2e3279"
+    },
+    {
+      "Start": "eb07f0b737b84b51a237e3ebf0109df5",
+      "End": "1cb24ae38e77440bbdcc7fd82a2c916e",
+      "Id": "17ac43a0730143e281ca291026f57313"
+    },
+    {
+      "Start": "bb589c2f4eae4a2397a2b195eb8b1105",
+      "End": "65098775b4fa4d439439be02447c80e0",
+      "Id": "252bd0358edf4a1da6bd9f1f71a8f35c"
+    },
+    {
+      "Start": "bb589c2f4eae4a2397a2b195eb8b1105",
+      "End": "9a9b8e47200444e3a001706f6aa9a506",
+      "Id": "dcce4e5b24924c05ac3adf921ee6bab0"
+    },
+    {
+      "Start": "3660ed1f9c5342979747ce6feb2a5fd7",
+      "End": "c21ecb4894cb4e6c9f9bc582e395a0d0",
+      "Id": "db16223cf3f44362ac6fa90b0daef200"
+    },
+    {
+      "Start": "7beec4794c824773993b244686ff7063",
+      "End": "16a8ccb02d0c4a99aff793db7f92f5a5",
+      "Id": "19d1fa1f416e47d297fe73a0d10a9166"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 100.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.6.1.8786",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Фоновый просмотр",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "NodeViews": [
+      {
+        "Id": "8f365640cd6d42268d780bcd75e4b73e",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "File Path",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 6642.9158278471314,
+        "Y": 15878.53074863061
+      },
+      {
+        "Id": "08eaa3c88d2644d0bde7eda7fe904493",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "File From Path",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 7051.4579709344125,
+        "Y": 15879.090923680704
+      },
+      {
+        "Id": "983334ffbc424442840654993ffd0bae",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "FileSystem.ReadText",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 7211.5985609374411,
+        "Y": 15880.986078591983
+      },
+      {
+        "Id": "2f529c8333214b3aa1fae21d0600e10b",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Python Script From String",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 7403.2320363938661,
+        "Y": 15891.409430604013
+      },
+      {
+        "Id": "440154aaeefe4b31bffa4ca8a3bdbf07",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Выбор типа аннотаций вручную",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 7003.8453424712816,
+        "Y": 16019.614163733564
+      },
+      {
+        "Id": "db9a5a6504f24bc4b3c3ab49a2180591",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Watch",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 7636.170094087518,
+        "Y": 16023.52999220504
+      },
+      {
+        "Id": "3ad39a5a9acd47a5b4fcad39cff7ec9d",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Data.ExportCSV",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 7678.4870410440908,
+        "Y": 15876.592106682096
+      },
+      {
+        "Id": "020f67735ccf46b9879b8ee1856fc0e2",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "String",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 7369.8349712185418,
+        "Y": 15706.430222711457
+      }
+    ],
+    "Annotations": [],
+    "X": -5027.4005742859163,
+    "Y": -11474.837490708427,
+    "Zoom": 0.74178207408055385
+  }
+}
