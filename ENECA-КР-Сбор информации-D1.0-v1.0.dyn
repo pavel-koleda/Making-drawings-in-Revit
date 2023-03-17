@@ -16,7 +16,7 @@
   "Nodes": [
     {
       "ConcreteType": "CoreNodeModels.Input.Filename, CoreNodeModels",
-      "HintPath": "D:\\Коледа Павел\\Программирование\\Скрипт по сбору информации\\ENECA-КР-Сбор информации-D1.0-v1.0.py",
+      "HintPath": "D:\\Коледа Павел\\Программирование\\Revit desighn helper\\ENECA-КР-Сбор информации-D1.0-v1.0.py",
       "InputValue": ".\\ENECA-КР-Сбор информации-D1.0-v1.0.py",
       "NodeType": "ExtensionNode",
       "Id": "8f365640cd6d42268d780bcd75e4b73e",
@@ -136,7 +136,7 @@
     {
       "ConcreteType": "CoreNodeModels.Input.BoolSelector, CoreNodeModels",
       "NodeType": "BooleanInputNode",
-      "InputValue": false,
+      "InputValue": true,
       "Id": "440154aaeefe4b31bffa4ca8a3bdbf07",
       "Inputs": [],
       "Outputs": [
@@ -305,89 +305,89 @@
     },
     "NodeViews": [
       {
+        "ShowGeometry": true,
+        "Name": "File Path",
         "Id": "8f365640cd6d42268d780bcd75e4b73e",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
-        "Name": "File Path",
-        "ShowGeometry": true,
         "Excluded": false,
         "X": 6642.9158278471314,
         "Y": 15878.53074863061
       },
       {
+        "ShowGeometry": true,
+        "Name": "File From Path",
         "Id": "08eaa3c88d2644d0bde7eda7fe904493",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
-        "Name": "File From Path",
-        "ShowGeometry": true,
         "Excluded": false,
         "X": 7051.4579709344125,
         "Y": 15879.090923680704
       },
       {
+        "ShowGeometry": true,
+        "Name": "FileSystem.ReadText",
         "Id": "983334ffbc424442840654993ffd0bae",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
-        "Name": "FileSystem.ReadText",
-        "ShowGeometry": true,
         "Excluded": false,
         "X": 7211.5985609374411,
         "Y": 15880.986078591983
       },
       {
+        "ShowGeometry": true,
+        "Name": "Python Script From String",
         "Id": "2f529c8333214b3aa1fae21d0600e10b",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
-        "Name": "Python Script From String",
-        "ShowGeometry": true,
         "Excluded": false,
         "X": 7403.2320363938661,
         "Y": 15891.409430604013
       },
       {
+        "ShowGeometry": true,
+        "Name": "Выбор типа аннотаций вручную",
         "Id": "440154aaeefe4b31bffa4ca8a3bdbf07",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
-        "Name": "Выбор типа аннотаций вручную",
-        "ShowGeometry": true,
         "Excluded": false,
-        "X": 7003.8453424712816,
+        "X": 7002.5223669187717,
         "Y": 16019.614163733564
       },
       {
+        "ShowGeometry": true,
+        "Name": "Watch",
         "Id": "db9a5a6504f24bc4b3c3ab49a2180591",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
-        "Name": "Watch",
-        "ShowGeometry": true,
         "Excluded": false,
-        "X": 7636.170094087518,
-        "Y": 16023.52999220504
+        "X": 7689.1433221404795,
+        "Y": 16074.113989236537
       },
       {
+        "ShowGeometry": true,
+        "Name": "Data.ExportCSV",
         "Id": "3ad39a5a9acd47a5b4fcad39cff7ec9d",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
-        "Name": "Data.ExportCSV",
-        "ShowGeometry": true,
         "Excluded": false,
         "X": 7678.4870410440908,
         "Y": 15876.592106682096
       },
       {
+        "ShowGeometry": true,
+        "Name": "String",
         "Id": "020f67735ccf46b9879b8ee1856fc0e2",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
-        "Name": "String",
-        "ShowGeometry": true,
         "Excluded": false,
         "X": 7369.8349712185418,
         "Y": 15706.430222711457
       }
     ],
     "Annotations": [],
-    "X": -5027.4005742859163,
-    "Y": -11474.837490708427,
-    "Zoom": 0.74178207408055385
+    "X": -5198.8765996980646,
+    "Y": -11984.108237545668,
+    "Zoom": 0.7558718663416959
   }
 }
