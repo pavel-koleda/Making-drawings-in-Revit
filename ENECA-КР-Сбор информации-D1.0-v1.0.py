@@ -3,7 +3,7 @@
 ############_____________Name___________################
 ScriptName = "ENECA-КР-Сбор информации-D1.0-v1.0"
 ############_____________Import___________################
-
+import re
 import clr
 
 clr.AddReference("System")
@@ -53,17 +53,51 @@ annotations_on_view = DB.FilteredElementCollector(doc).OwnedByView(
 csv_path = r'C:\Users\User\Desktop\revit_data2.csv'
 
 # Create a list to store data
-data = [['Name', 'Length'],]
+data = [['Координата марки X ', 'Координата марки Y', 'Координата элемента X', 'Координата элемента Y',
+         'Направление элемента X', 'Направление элемента Y', 'Ориентация марки', 'Длина элемента', 'Тип элемента'],]
+
+
+X_coord_list = [tag.TagHeadPosition.X for tag in annotations_on_view]
+Y_coord_list = [tag.TagHeadPosition.Y for tag in annotations_on_view]
+X_center = (max(X_coord_list) - min(X_coord_list)) / 2
+Y_center = (max(Y_coord_list) - min(Y_coord_list)) / 2
+rr = []
+tag_orientation_dict = {'Horizontal': 0, 'Vertical': 1}
 
 # Loop through each wall and get its parameters
-for tag in annotations_on_view:
-    name = tag.Id.IntegerValue
-    name1 = tag.TagText
+for tag in annotations_on_view:  
+    tag_X_coord = tag.TagHeadPosition.X - X_center
+    tag_Y_coord = tag.TagHeadPosition.Y - Y_center
+    element = tag.GetTaggedLocalElement()
+    element_center = element.GetTransform().Origin
+    element_X_coord = element_center.X - X_center
+    element_Y_coord = element_center.Y - Y_center
+    element_X_direction = round(element.HandOrientation.X, 3)
+    element_Y_direction = round(element.HandOrientation.Y, 3)
+    tag_orientation = tag_orientation_dict[str(tag.TagOrientation)]
+    element_length = element.Location.Curve.Length
+    if re.match(r'^(П[а-яА-Я]+|П[а-яА-Я]+-|П|П-)\d+', tag.TagText):
+        element_type = 'Прогон'
+    elif re.match(r'^(Б[а-яА-Я]+|Б[а-яА-Я]+-|Б|Б-)\d+', tag.TagText):
+        element_type = 'Балка'
+    elif re.match(r'^(Ф[а-яА-Я]+|Ф[а-яА-Я]+-|Ф|Ф-)\d+', tag.TagText):
+        element_type = 'Ферма'
+    elif re.match(r'^(С[а-яА-Я]+|С[а-яА-Я]+-|С|С-)\d+', tag.TagText):
+        element_type = 'Связь'
+    elif re.match(r'^(Т[а-яА-Я]+|Т[а-яА-Я]+-|Т|Т-)\d+', tag.TagText):
+        element_type = 'Тяж'
+    elif re.match(r'^(У[а-яА-Я]+|У[а-яА-Я]+-|У|У-)\d+', tag.TagText):
+        element_type = 'Раскрепление уголком'
+    else:
+        element_type = 'Неопределен'
+
     #length = get_parameter_value(tag.Parameter[DB.BuiltInParameter.ELEM_PARTITION_PARAM])
-    data.append([str(name), str(name1)])
+    data.append([str(tag_X_coord).replace(',', '.'), str(tag_Y_coord).replace(',', '.'), str(element_X_coord).replace(',', '.'), 
+                 str(element_Y_coord).replace(',', '.'), str(element_X_direction).replace(',', '.'), 
+                 str(element_Y_direction).replace(',', '.'), tag_orientation, str(element_length).replace(',', '.'), element_type])
 
-
-# Show a message box to confirm that the file was saved
+c = DB.Point.Create(DB.XYZ(91.8635170603673, 29.2852597685434, 18.6738379381026))
+# Show a message box to confirm that the file was save
 message = 'CSV file saved to: {}'.format(csv_path)
 TaskDialog.Show('Success', message)
 
